@@ -1,14 +1,17 @@
-SELECT * FROM zonnenstelsel;
+SELECT * FROM planeten; 
 
-DROP TABLE zonnenstelsel;
+ALTER TABLE planeten ADD (bezoek_datum date);
 
-CREATE TABLE zonnenstelsel (
-	name varchar(20),
-    diameter INT,
-    afstand_tot_de_zon FLOAT,
-    massa FLOAT
-);
+ALTER TABLE planeten DROP primary key;
 
-INSERT INTO zonnenstelsel VALUES (
-"Zon", "1392000", "0", "332946"
-);
+DESC planeten;
+
+ALTER TABLE planeten ADD primary key(name,diameter,afstand_tot_de_zon,massa);
+
+ALTER TABLE test112 RENAME TO planeten;
+
+UPDATE planeten
+SET bezoek_datum = '1969'
+WHERE bezoek_datum = 1 ;
+
+UPDATE `sterrenstelsel`.`planeten` SET `bezoek_datum` = '1969-07-20' WHERE (`name` = 'Aarde');
